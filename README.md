@@ -9,3 +9,23 @@
 3. Goal: find the small subset of signals that actually predict pass/fail (the -1 and 1 labels in the target file)
 4. Real business impact: reduce scrap rate, cut costs, increase throughput.
 
+
+#### Pipeline Practice Imputation for Producion Level ML
+```angular2html
+from sklearn.pipeline import Pipeline
+from sklearn.linear_model import LogisticRegression
+
+pipeline = Pipeline([
+    ("imputer", SimpleImputer(strategy="mean")),
+    ("model", LogisticRegression())
+])
+
+pipeline.fit(X_train_1, y_train)
+
+```
+
+
+N/B: Important step in data pre-processing and EDA is checking for constant features in columns.
+- It is also important to check at the behaviour of null values and even  plot it in a  msno matrix
+- It is also a best practice to check for outliers after splitting the data, it should never influence the testing data.
+
